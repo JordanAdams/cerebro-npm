@@ -8,9 +8,9 @@
 ## Usage
 Search for NPM packages using "**npm** [search term]".
 
-<kbd>Return</kbd> - Open a package on the NPM website.
-
-<kbd>cmd+c</kbd> - Copy the install command eg. `npm install -S react`
+* <kbd>Return</kbd> - Open a package on the NPM website.
+* <kbd>alt+return</kbd> - Open a package github repository.
+* <kbd>cmd+c</kbd> - Copy the install command eg. `npm install -S react`
 
 ## License
 MIT © Jordan Adams

@@ -22,7 +22,11 @@ const displayResult = ({ display, actions }, result) => {
     title: result.package.name,
     subtitle: result.package.description,
     clipboard: `npm i -S ${result.package.name}`,
-    onSelect: () => actions.open(result.package.links.npm)
+    onSelect: (event) => {
+      const { npm, repository } = result.package.links;
+      const url = event.altKey && repository ? repository : npm;
+      actions.open(url);
+    }
   });
 };
 
