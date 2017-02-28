@@ -2,7 +2,7 @@
 > Cerebro plugin to search NPM packages
 
 <div align="center">
-  <img src=".github/screenshot.png" />
+  <img src="https://github.com/JordanAdams/cerebro-npm/blob/master/.github/screenshot.png?raw=true" />
 </div>
 
 ## Usage
