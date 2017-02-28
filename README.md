@@ -1,7 +1,9 @@
 # cerebro-npm
 > Cerebro plugin to search NPM packages
 
-![cerebro-npm screenshot](.github/screenshot.png)
+<div align="center">
+  <img src=".github/screenshot.png" />
+</div>
 
 ## Usage
 Search for NPM packages using "**npm** [search term]".
