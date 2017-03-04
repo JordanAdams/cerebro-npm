@@ -41,7 +41,7 @@ const fn = (scope) => {
 
   const query = extractQueryFromTerm(term);
 
-  if (query && query.length > 0) {
+  if (query) {
     display({ icon, id: 'npm-loading', title: 'Searching NPM packages ...' });
 
     fetchPackages(query).then(results => {
