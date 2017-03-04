@@ -10,7 +10,13 @@ const fetchPackages = (query) => {
 };
 
 const extractQueryFromTerm = (term) => {
-  const [_, query] = term.match(/^npm\s(.+)$/);
+  const match = term.match(/^npm\s(.+)$/);
+
+  if (!match) {
+    return false;
+  }
+
+  const [_, query] = match;
   return query.trim();
 }
 
