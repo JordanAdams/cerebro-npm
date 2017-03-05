@@ -1,13 +1,18 @@
 'use strict';
+const debounce = require('p-debounce');
+const {memoize} = require('cerebro-tools');
 const icon = require('./assets/npm-logo.png');
 const id = 'npm';
+const memoizationSettings = {
+  maxAge: 60 * 1000 // 1 minute
+};
 
-const fetchPackages = (query) => {
+const fetchPackages = debounce(memoize((query) => {
   console.log('query passed:', query)
   return fetch(`https://api.npms.io/v2/search?q=${query}`)
     .then(response => response.json())
     .then(data => data.results);
-};
+}, memoizationSettings), 300);
 
 const extractQueryFromTerm = (term) => {
   const match = term.match(/^npm\s(.+)$/);

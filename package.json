@@ -33,6 +33,7 @@
     "babili": "0.0.9",
     "cerebro-tools": "^0.1.0",
     "css-loader": "^0.26.0",
+    "p-debounce": "^1.0.0",
     "react": "^15.4.1",
     "rimraf": "^2.6.1",
     "style-loader": "^0.13.1",
