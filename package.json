@@ -16,8 +16,12 @@
     "build": "webpack && babili dist -d dist --compact --no-comments",
     "debug": "./scripts/debug",
     "debug:windows": "scripts\\debug.bat",
-    "prepublish": "rimraf ./dist && npm run build"
+    "prepublish": "rimraf ./dist && npm run build",
+    "lint": "xo"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "main": "dist/index.js",
   "keywords": [
     "cerebro",
@@ -34,10 +38,32 @@
     "cerebro-tools": "^0.1.0",
     "css-loader": "^0.26.0",
     "p-debounce": "^1.0.0",
+    "pre-commit": "^1.2.2",
     "react": "^15.4.1",
     "rimraf": "^2.6.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "2.1.0-beta.27"
+    "webpack": "2.1.0-beta.27",
+    "xo": "^0.17.1"
+  },
+  "xo": {
+    "space": 2,
+    "envs": [
+      "node",
+      "browser"
+    ],
+    "rules": {
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "no-unused-vars": [
+        "error",
+        {
+          "ignoreRestSiblings": true,
+          "varsIgnorePattern": "$_*^"
+        }
+      ]
+    }
   }
 }

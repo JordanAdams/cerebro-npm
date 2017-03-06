@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
@@ -14,7 +13,7 @@ module.exports = {
     extensions: ['.js'],
     modules: [
       path.resolve('./src'),
-      path.resolve('./node_modules'),
+      path.resolve('./node_modules')
     ]
   },
   target: 'electron-renderer',
