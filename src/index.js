@@ -45,17 +45,19 @@ const fn = scope => {
   const { term, display, hide } = scope;
   const query = extractQueryFromTerm(term);
 
-  if (query) {
-    display({ icon, id: 'npm-loading', title: 'Searching NPM packages ...' });
-
-    cachedFetchPackages(query)
-      .then(results => {
-        hide('npm-loading');
-
-        results.slice(0, 10)
-          .forEach(result => displayResult(scope, result));
-      });
+  if (!query) {
+    return display({ icon, id: 'npm', title: `Search NPM for ${term}` });
   }
+
+  display({ icon, id: 'npm-loading', title: 'Searching NPM packages ...' });
+
+  cachedFetchPackages(query)
+    .then(results => {
+      hide('npm-loading');
+
+      results.slice(0, 10)
+        .forEach(result => displayResult(scope, result));
+    });
 };
 
 module.exports = {
