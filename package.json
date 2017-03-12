@@ -1,6 +1,6 @@
 {
   "name": "cerebro-npm",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A Cerebro plugin for searching NPM packages",
   "license": "MIT",
   "repository": "jordanadams/cerebro-npm",
