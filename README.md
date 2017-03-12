@@ -1,6 +1,8 @@
 # cerebro-npm
 > Cerebro plugin to search NPM packages
 
+![](https://travis-ci.org/JordanAdams/cerebro-npm.svg?branch=master)
+
 <div align="center">
   <img src="https://github.com/JordanAdams/cerebro-npm/blob/master/.github/screenshot.png?raw=true" />
 </div>
