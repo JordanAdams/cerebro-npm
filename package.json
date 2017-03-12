@@ -17,7 +17,8 @@
     "debug": "./scripts/debug",
     "debug:windows": "scripts\\debug.bat",
     "prepublish": "rimraf ./dist && npm run build",
-    "lint": "xo"
+    "lint": "xo",
+    "test": "mocha --require ./test/utils/init.js"
   },
   "pre-commit": [
     "lint"
@@ -29,18 +30,30 @@
     "npm",
     "package manager"
   ],
+  "dependencies": {
+    "p-debounce": "^1.0.0",
+    "request": "^2.81.0",
+    "cerebro-tools": "^0.1.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-loader": "^6.2.8",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-register": "^6.23.0",
     "babili": "0.0.9",
-    "cerebro-tools": "^0.1.0",
+    "chai": "^3.5.0",
     "css-loader": "^0.26.0",
-    "p-debounce": "^1.0.0",
+    "dirty-chai": "^1.2.2",
+    "mocha": "^3.2.0",
     "pre-commit": "^1.2.2",
+    "proxyquire": "^1.7.11",
     "react": "^15.4.1",
+    "request-promise-native": "^1.0.3",
+    "require-hacker": "^2.1.4",
     "rimraf": "^2.6.1",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "2.1.0-beta.27",
@@ -50,7 +63,7 @@
     "space": 2,
     "envs": [
       "node",
-      "browser"
+      "mocha"
     ],
     "rules": {
       "object-curly-spacing": [

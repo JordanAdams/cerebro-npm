@@ -1,20 +1,13 @@
-'use strict';
-
 const debounce = require('p-debounce');
 const { memoize } = require('cerebro-tools');
 const icon = require('./assets/npm-logo.png');
 const config = require('./config');
+const npm = require('./npm');
 
-const fetchPackages = query => {
-  return fetch(`https://api.npms.io/v2/search?q=${query}`)
-    .then(response => response.json())
-    .then(data => data.results);
-};
-
-const cachedFetchPackages = debounce(memoize(fetchPackages, config.memoization), config.debounce);
+const searchPackages = debounce(memoize(npm.search, config.memoization), config.debounce);
 
 const queryFromTerm = term => {
-  const match = term.match(/^npm\s(.+)$/);
+  const match = term.match(/^npm (.+)$/);
   return match ? match[1].trim() : null;
 };
 
@@ -41,17 +34,19 @@ const fn = scope => {
   const { term, display, hide } = scope;
   const query = queryFromTerm(term);
 
-  if (query) {
-    display({ icon, id: 'npm-loading', title: 'Searching NPM packages ...' });
-
-    cachedFetchPackages(query)
-      .then(results => {
-        hide('npm-loading');
-
-        results.slice(0, 10)
-          .forEach(result => displayResult(scope, result));
-      });
+  if (!query) {
+    return null;
   }
+
+  display({ icon, id: 'npm-loading', title: 'Searching NPM packages ...' });
+
+  return searchPackages(query)
+    .then(results => {
+      hide('npm-loading');
+
+      results.slice(0, 10)
+        .forEach(result => displayResult(scope, result));
+    });
 };
 
 module.exports = {
