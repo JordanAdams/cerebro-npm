@@ -21,7 +21,7 @@ describe('npm', () => {
           expect(request).to.have.been.calledOnce();
           expect(request).to.have.been.calledWithMatch({
             url: 'https://api.npms.io/v2/search',
-            qs: { query: 'foobar' },
+            qs: { q: 'foobar' },
             json: true
           });
         })
