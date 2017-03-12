@@ -10,7 +10,7 @@
     "url": "http://github.com/jordanadams"
   },
   "engines": {
-    "node": ">=5"
+    "node": ">=6"
   },
   "scripts": {
     "build": "webpack && babili dist -d dist --compact --no-comments",
