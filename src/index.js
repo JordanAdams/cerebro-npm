@@ -13,13 +13,9 @@ const fetchPackages = query => {
 
 const cachedFetchPackages = debounce(memoize(fetchPackages, config.memoization), config.debounce);
 
-const extractQueryFromTerm = term => {
+const queryFromTerm = term => {
   const match = term.match(/^npm\s(.+)$/);
-  if (!match) {
-    return false;
-  }
-
-  return match[1].trim();
+  return match ? match[1].trim() : null;
 };
 
 const displayResult = ({ display, actions }, result) => {
@@ -43,7 +39,7 @@ const displayResult = ({ display, actions }, result) => {
 
 const fn = scope => {
   const { term, display, hide } = scope;
-  const query = extractQueryFromTerm(term);
+  const query = queryFromTerm(term);
 
   if (query) {
     display({ icon, id: 'npm-loading', title: 'Searching NPM packages ...' });
@@ -61,6 +57,6 @@ const fn = scope => {
 module.exports = {
   icon,
   fn,
-  keyword: 'npm',
+  keyword: config.plugin.keyword,
   name: 'Search NPM packages'
 };
